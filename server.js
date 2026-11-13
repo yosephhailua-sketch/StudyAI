@@ -6,7 +6,7 @@ const OpenAI = require("openai");
 const { PDFParse } = require("pdf-parse");
 const app = express();
 const multer = require("multer");
-
+const { rateLimit } = require("express-rate-limit");
 const client = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
@@ -19,7 +19,19 @@ const upload = multer({
         fileSize: 10 * 1024 * 1024
     }
 });
-app.post("/ask", upload.single("pdfFile"), async (req, res) => {
+
+app.set("trust proxy", 1);
+
+const askLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    limit: 20,
+    standardHeaders: "draft-8",
+    legacyHeaders: false,
+    message: {
+        error: "För många frågor. Vänta en stund och försök igen."
+    }
+});
+app.post("/ask", askLimiter, upload.single("pdfFile"), async (req, res) => {
     try {
         const question = req.body.question;
 let pdfText = "";
