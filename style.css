@@ -1,0 +1,454 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f6fc;
+    color: #1e293b;
+    min-height: 100vh;
+    padding: 40px;
+}
+
+h1 {
+    color: #2563eb;
+    font-size: 36px;
+}
+
+#description {
+    color: #64748b;
+    font-size: 18px;
+}
+
+#question {
+    padding: 14px;
+    width: 350px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#askButton {
+    padding: 14px 22px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#answer {
+    background-color: #ffffff;
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+    padding: 25px;
+    margin-top: 30px;
+    max-width: 900px;
+    line-height: 1.7;
+    font-size: 18px;
+    color: #334155;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow-wrap: break-word;
+}
+
+
+
+
+
+
+/* Rubriker i AI-svaren */
+#answer h1,
+#answer h2,
+#answer h3 {
+    color: #2563eb;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Punktlistor */
+#answer ul,
+#answer ol {
+    padding-left: 28px;
+}
+
+/* Viktig text */
+#answer strong {
+    color: #1e40af;
+}
+
+/* Kod och formler */
+#answer code {
+    background-color: #eff6ff;
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+
+/* =================================
+   STUDYAI – NY PROFESSIONELL DESIGN
+================================= */
+
+body {
+    background: #f5f7fc;
+    color: #172554;
+    font-family: "Segoe UI", Arial, sans-serif;
+    padding: 40px 6%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* Huvudrubrik */
+h1 {
+    color: #1d4ed8;
+    font-size: 38px;
+    font-weight: 750;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+/* Beskrivning */
+#description {
+    color: #64748b;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Frågefält */
+#question {
+    width: min(100%, 480px);
+    min-height: 58px;
+    padding: 16px 18px;
+    border: 1px solid #dbe3f0;
+    border-radius: 14px;
+    background: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.2s;
+}
+
+#question:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+/* Alla huvudknappar */
+#askButton,
+#quizButton {
+    padding: 16px 25px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 13px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#askButton:hover,
+#quizButton:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+#askButton:disabled,
+#quizButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Filuppladdning */
+input[type="file"] {
+    max-width: 100%;
+    margin: 10px;
+    font-size: 14px;
+}
+
+/* Svarskort */
+#answer {
+    width: 100%;
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 35px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 22px;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.06);
+    color: #334155;
+    font-size: 18px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+/* Rubriker i svar och quiz */
+#answer h1,
+#answer h2,
+#answer h3 {
+    color: #2563eb;
+    margin-top: 22px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+/* Text i svar */
+#answer p {
+    margin: 14px 0;
+}
+
+/* Listor i svar */
+#answer ul,
+#answer ol {
+    padding-left: 28px;
+}
+
+/* Quizfrågor */
+.quiz-question {
+    margin-bottom: 30px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Quizets svarsknappar */
+#answer .quiz-question button {
+    margin: 6px 5px 6px 0;
+    padding: 12px 16px;
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#answer .quiz-question button:hover {
+    background: #dbeafe;
+    border-color: #60a5fa;
+}
+
+/* Kodrutor */
+#answer pre {
+    padding: 18px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+#answer code {
+    background: #eff6ff;
+    border-radius: 5px;
+    padding: 3px 6px;
+}
+
+/* Mobilanpassning */
+@media (max-width: 700px) {
+    body {
+        padding: 25px 16px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    #answer {
+        padding: 22px;
+        font-size: 16px;
+    }
+
+    #question {
+        width: 100%;
+    }
+
+    #askButton,
+    #quizButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #answer .quiz-question button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Layout för StudyAI:s inmatningsområde */
+
+#question,
+#pdfFile,
+#quizButton,
+#askButton {
+    vertical-align: middle;
+}
+
+#question {
+    display: inline-block;
+    width: min(100%, 480px);
+    margin: 0 10px 10px 0;
+}
+
+#pdfFile {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+}
+
+#quizButton,
+#askButton {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+}
+
+/* Språkmenyn */
+#language {
+    padding: 8px 12px;
+    border: 1px solid #dbe3f0;
+    border-radius: 8px;
+    background: white;
+    font-size: 15px;
+}
+/* Frågehistorik */
+.history-section {
+    margin-top: 40px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #dbe3f0;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(30, 60, 100, 0.06);
+}
+
+.history-section h2 {
+    margin-top: 0;
+    color: #1e3a8a;
+}
+
+/* Knappen Rensa historik */
+#clearHistoryButton {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#clearHistoryButton:hover {
+    background: #1d4ed8;
+}
+
+/* Enskilda historikposter */
+.history-entry {
+    padding: 18px;
+    margin-bottom: 15px;
+    background: #f5f7fc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.history-entry small {
+    color: #64748b;
+}
+/* OCEAN BLUE – STUDYAI */
+
+body {
+    background: #EAF2FF;
+    color: #173B70;
+}
+
+h1, h2, h3 {
+    color: #173B70;
+}
+
+#askButton,
+#quizButton,
+#clearHistoryButton {
+    background: #3978D8;
+    color: white;
+    border: none;
+}
+
+#askButton:hover,
+#quizButton:hover,
+#clearHistoryButton:hover {
+    background: #285FAF;
+}
+
+.study-panel,
+.answer-section,
+.history-section {
+    background: #FFFFFF;
+    border: 1px solid #DCE8F8;
+}
+
+#question {
+    border-color: #C7DCFA;
+}
+.study-panel {
+    border-radius: 22px;
+    padding: 30px;
+}
+/* Ocean Blue – Svårighetsmeny */
+
+.difficulty-selector {
+    margin-bottom: 15px;
+}
+
+.difficulty-selector label {
+    color: #173B70;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+#difficulty {
+    padding: 10px 14px;
+    border: 1px solid #C7DCFA;
+    border-radius: 10px;
+    background: #FFFFFF;
+    color: #173B70;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#difficulty:focus {
+    outline: none;
+    border-color: #3978D8;
+    box-shadow: 0 0 0 3px rgba(57, 120, 216, 0.15);
+}
+/* Ocean Blue – AI-svarsrutan */
+
+.answer-section {
+    background: #FFFFFF;
+    border: 1px solid #DCE8F8;
+    border-radius: 22px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 8px 25px rgba(23, 59, 112, 0.05);
+}
+
+#answer {
+    color: #173B70;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+#answer h1,
+#answer h2,
+#answer h3 {
+    color: #245A9C;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+#answer p {
+    margin-bottom: 16px;
+}
+
+#answer li {
+    margin-bottom: 8px;
+}
+
+#answer strong {
+    color: #173B70;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyAI – Din AI-studieassistent</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+</head>
+
+<body>
+
+    <main class="app-container">
+
+        <!-- Toppmeny -->
+        <header class="topbar">
+            <div class="logo">Study<span>AI</span></div>
+
+            <div class="language-selector">
+                <label for="language">Språk</label>
+                <select id="language">
+                    <option value="sv">🇸🇪 Svenska</option>
+                    <option value="en">🇬🇧 English</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Välkomstsektion -->
+        <section class="hero">
+            <p class="eyebrow">DIN PERSONLIGA STUDIEASSISTENT</p>
+
+            <h1 id="heading">Välkommen till StudyAI!</h1>
+
+            <p id="description">
+                Din personliga AI-studieassistent.
+                Ställ frågor, förstå svåra ämnen och utvecklas i din egen takt.
+            </p>
+        </section>
+
+        <!-- Studieverktyg -->
+        <section class="study-panel">
+
+            <div class="panel-heading">
+                <h2>Vad vill du lära dig idag?</h2>
+                <p>Skriv en fråga eller ladda upp ett dokument.</p>
+            </div>
+
+            <div class="input-area">
+<div class="difficulty-selector">
+    <label for="difficulty">Svårighetsnivå:</label>
+
+    <select id="difficulty">
+        <option value="easy">Lätt</option>
+        <option value="medium" selected>Medel</option>
+        <option value="hard">Svår</option>
+    </select>
+</div>
+                <input
+                    type="text"
+                    id="question"
+                    placeholder="Skriv din fråga här..."
+                >
+
+                <div class="tools-row">
+
+                    <label class="file-label" for="pdfFile">
+                        📄 Välj PDF
+                    </label>
+
+                    <input
+                        type="file"
+                        id="pdfFile"
+                        accept=".pdf,application/pdf"
+                    >
+
+                    <button type="button" id="quizButton">
+                        Skapa quiz
+                    </button>
+
+                    <button type="button" id="askButton">
+                        Fråga StudyAI
+                    </button>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- AI-svar -->
+        <section class="answer-section">
+            <div id="answer" aria-live="polite"></div>
+        </section>
+        <!-- Frågehistorik -->
+
+<section class="history-section">
+    <h2>Din frågehistorik</h2>
+
+    <button type="button" id="clearHistoryButton">
+        Rensa historik
+    </button>
+
+    <div id="history"></div>
+</section>
+    </main>
+
+    <!-- Bibliotek -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+
+    <!-- StudyAI JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
