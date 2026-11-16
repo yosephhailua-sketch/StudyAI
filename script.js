@@ -30,11 +30,14 @@ function showAnswer(text) {
 
         const html = marked.parse(text);
 
-        answer.innerHTML = DOMPurify.sanitize(html);
+        const bubble = document.createElement("div");
+bubble.className = "chat-bubble ai-bubble";
+bubble.innerHTML = DOMPurify.sanitize(html);
+answer.appendChild(bubble);
 
         // Visa matematiska formler med KaTeX
         if (typeof renderMathInElement !== "undefined") {
-            renderMathInElement(answer, {
+            renderMathInElement(bubble, {
                 delimiters: [
                     { left: "$$", right: "$$", display: true },
                     { left: "\\[", right: "\\]", display: true },
@@ -61,7 +64,15 @@ const selectedDifficulty = difficulty.value;
         return;
     }
 
-    answer.textContent = "StudyAI tänker...";
+    const userBubble = document.createElement("div");
+userBubble.className = "chat-bubble user-bubble";
+userBubble.textContent = userQuestion;
+answer.appendChild(userBubble);
+
+const thinkingBubble = document.createElement("div");
+thinkingBubble.className = "chat-bubble ai-bubble";
+thinkingBubble.textContent = "StudyAI tänker...";
+answer.appendChild(thinkingBubble);
     askButton.disabled = true;
 
     try {
@@ -114,7 +125,7 @@ const response = await fetch("/ask", {
                 data.error || "Något gick fel."
             );
         }
-
+thinkingBubble.remove();
         showAnswer(data.answer);
        tutorHistory.push(
     { role: "user", text: userQuestion },
@@ -125,7 +136,7 @@ tutorHistory = tutorHistory.slice(-10);
 saveToHistory(userQuestion, data.answer);
 displayHistory();
     } catch (error) {
-        answer.textContent = "Fel: " + error.message;
+        thinkingBubble.textContent = "Fel: " + error.message;
 
     } finally {
         askButton.disabled = false;

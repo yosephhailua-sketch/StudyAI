@@ -452,3 +452,44 @@ h1, h2, h3 {
 #answer strong {
     color: #173B70;
 }
+/* StudyAI - chattbubblor */
+#answer.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+}
+
+#answer .chat-bubble {
+    padding: 14px 18px;
+    border-radius: 18px;
+    max-width: 85%;
+    width: fit-content;
+    overflow-wrap: anywhere;
+    line-height: 1.6;
+}
+
+/* Användarens frågor till höger */
+#answer .user-bubble {
+    align-self: flex-end;
+    background-color: #3478db;
+    color: white;
+    border-bottom-right-radius: 5px;
+    white-space: pre-wrap;
+}
+
+/* StudyAI:s svar till vänster */
+#answer .ai-bubble {
+    align-self: flex-start;
+    background-color: #eef4ff;
+    color: #173b70;
+    border: 1px solid #d8e5fa;
+    border-bottom-left-radius: 5px;
+}
+
+/* Anpassning för mobil */
+@media (max-width: 600px) {
+    #answer .chat-bubble {
+        max-width: 95%;
+    }
+}
