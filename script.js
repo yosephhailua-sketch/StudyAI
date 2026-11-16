@@ -51,6 +51,8 @@ function showAnswer(text) {
 }
 
 // Skicka fråga till StudyAI
+let tutorHistory = [];
+
 async function askStudyAI() {
     const userQuestion = question.value.trim();
 const selectedDifficulty = difficulty.value;
@@ -81,7 +83,12 @@ VIKTIGT:
 - Visa aldrig de andra svårighetsnivåerna.
 - Ge endast en sammanhängande förklaring.
 - Anpassa ordval, detaljnivå och exempel till den valda nivån.
+- Om användaren ställer en följdfråga, använd tidigare samtal för att förstå sammanhanget.
+- Om användaren ber om en enklare förklaring, använd korta meningar, enkla ord och vardagliga exempel.
 - Skriv alla matematiska och kemiska formler med vanlig text. Använd exempelvis H2O och CO2. Använd aldrig LaTeX, $, hakparenteser eller understreck för formler.
+Tidigare samtal:
+${tutorHistory.map(item => `${item.role}: ${item.text}`).join("\n")}
+
 Användarens fråga: ${userQuestion}`
 );
 
@@ -109,6 +116,12 @@ const response = await fetch("/ask", {
         }
 
         showAnswer(data.answer);
+       tutorHistory.push(
+    { role: "user", text: userQuestion },
+    { role: "assistant", text: data.answer }
+);
+
+tutorHistory = tutorHistory.slice(-10); 
 saveToHistory(userQuestion, data.answer);
 displayHistory();
     } catch (error) {
