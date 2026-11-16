@@ -48,7 +48,7 @@ if (req.file) {
     }
         const response = await client.responses.create({
             model: "gpt-5-mini",
-input: `Svara pedagogiskt på svenska.
+input: `Svara pedagogiskt på samma språk som användarens fråga.
 Använd tydliga rubriker och punktlistor.
 När du skriver matematiska eller kemiska formler ska du alltid använda KaTeX-kompatibel LaTeX.
 Skriv fristående formler mellan \\[ och \\].
