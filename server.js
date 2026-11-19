@@ -31,14 +31,19 @@ const askLimiter = rateLimit({
         error: "För många frågor. Vänta en stund och försök igen."
     }
 });
-app.post("/ask", askLimiter, upload.single("pdfFile"), async (req, res) => {
+app.post("/ask", askLimiter, upload.fields([
+    { name: "pdfFile", maxCount: 1 },
+    { name: "cameraFile", maxCount: 1 }
+]), async (req, res) => {
     try {
         const question = req.body.question;
 let pdfText = "";
 
-if (req.file) {
+const pdfFile = req.files?.pdfFile?.[0];
+
+if (pdfFile) {
     const parser = new PDFParse({
-        data: req.file.buffer
+      data: pdfFile.buffer 
     });
 
     const pdfData = await parser.getText();
@@ -46,9 +51,21 @@ if (req.file) {
 
     await parser.destroy();
     }
+      const cameraFile = req.files?.cameraFile?.[0];
+     const imageContent = cameraFile
+    ? [{
+        type: "input_image",
+        image_url: `data:${cameraFile.mimetype};base64,${cameraFile.buffer.toString("base64")}`
+    }]
+    : []; 
         const response = await client.responses.create({
             model: "gpt-5-mini",
-input: `Svara pedagogiskt på samma språk som användarens fråga.
+input: [{
+    role: "user",
+    content: [
+        {
+            type: "input_text",
+            text: `Svara pedagogiskt på samma språk som användarens fråga.
 Använd tydliga rubriker och punktlistor.
 När du skriver matematiska eller kemiska formler ska du alltid använda KaTeX-kompatibel LaTeX.
 Skriv fristående formler mellan \\[ och \\].
@@ -58,6 +75,10 @@ Skriv aldrig LaTeX-formler utan dessa avgränsare.
 ${pdfText ? `Innehåll från användarens PDF:\n${pdfText}` : ""}
 
 Fråga: ${question}`
+        },
+        ...imageContent
+    ]
+}]
 
 
         });

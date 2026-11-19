@@ -4,6 +4,7 @@ const heading = document.getElementById("heading");
 const description = document.getElementById("description");
 const question = document.getElementById("question");
 const pdfFile = document.getElementById("pdfFile");
+const cameraFile = document.getElementById("cameraFile");
 const askButton = document.getElementById("askButton");
 const answer = document.getElementById("answer");
 const difficulty = document.getElementById("difficulty");
@@ -111,6 +112,19 @@ if (pdfFile.files.length > 0) {
     }
 
     formData.append("pdfFile", selectedFile);
+}
+if (cameraFile.files.length > 0) {
+    const selectedImage = cameraFile.files[0];
+
+    if (!selectedImage.type.startsWith("image/")) {
+        throw new Error("Du måste välja en bildfil.");
+    }
+
+    if (selectedImage.size > 10 * 1024 * 1024) {
+        throw new Error("Bilden får inte vara större än 10 MB.");
+    }
+
+    formData.append("cameraFile", selectedImage);
 }
 
 const response = await fetch("/ask", {
@@ -292,7 +306,9 @@ function displayHistory() {
         questionText.textContent = "Fråga: " + item.question;
 
         const answerText = document.createElement("p");
-        answerText.textContent = "Svar: " + item.answer;
+       answerText.innerHTML = "<strong>Svar:</strong><br>" +
+    DOMPurify.sanitize(marked.parse(item.answer || ""));
+
 
         entry.append(date, questionText, answerText);
         historyDiv.appendChild(entry);
